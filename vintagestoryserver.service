@@ -1,0 +1,17 @@
+[Unit]
+Description=Vintage Story Server Unit
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/gameserver/vintagestory
+ExecStart=dotnet VintagestoryServer.dll --dataPath /srv/gameserver/data/vs
+Restart=always
+RestartSec=30
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=VSSRV
+User=gameserver
+Group=gameserver
+
+[Install]
+WantedBy=multi-user.target
